@@ -1,19 +1,62 @@
+import { createStore } from 'redux';
+import { Provider, useDispatch } from 'react-redux';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components/native';
+import Svg, { Circle } from 'react-native-svg';
 
-export default function App() {
+import { addSinglePoint } from './components/score/actions';
+import Score from './components/score';
+
+import setupStore from './configureStore.js';
+
+function App() {
+  const dispatch = useDispatch();
+  const pressHandler = () => dispatch(addSinglePoint());
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <StyledView>
+      <StyledSvg viebox="0 0 100 100">
+        <Circle 
+          cx="50"
+          cy="50"
+          r="45"
+          stroke="blue"
+          strokeWidth="2.5"
+          fill="green"
+        />
+
+      </StyledSvg>
+
+      <StyledText>Open up App.js to start working on your app!</StyledText>
+
+      <Score />
+
+      <StyledButton title="Add point" onPress={pressHandler}/>
+    </StyledView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const StyledButton = styled.Button`
+`;
+
+const StyledText = styled.Text`
+  color: palevioletred;
+`;
+
+const StyledSvg = styled(Svg)`
+  height: 100px;
+  width: 100px;
+`;
+
+const StyledView = styled.View`
+  background-color: black;
+  height: 100%;
+  justify-content: flex-end;
+`;
+
+export default function ConectedApp() {
+  return (
+    <Provider store={setupStore()}>
+      <App />
+    </Provider>
+  );
+}
