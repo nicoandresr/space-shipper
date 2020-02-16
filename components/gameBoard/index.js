@@ -6,13 +6,14 @@ import Svg, { Circle } from 'react-native-svg';
 import { addSinglePoint } from '../score/actions';
 import Score from '../score';
 
-export default function GameBoard() {
-  const dispatch = useDispatch();
+const GameBoard = () => {
+  const dispatch = useDispatch()
   const pressHandler = () => dispatch(addSinglePoint());
+
   return (
     <StyledView>
       <StyledSvg viebox="0 0 100 100">
-        <Circle 
+        <Circle
           cx="50"
           cy="50"
           r="45"
@@ -20,17 +21,20 @@ export default function GameBoard() {
           strokeWidth="2.5"
           fill="green"
         />
-
       </StyledSvg>
-
-      <StyledText>Open up App.js to start working on your app!</StyledText>
 
       <Score />
 
-      <StyledButton title="Add point" onPress={pressHandler}/>
+      <StyledText>Open up App.js to start working on your app!</StyledText>
+
+      <StyledButton title="Add point" onPress={pressHandler} />
     </StyledView>
-  );
+  )
 }
+
+
+export default GameBoard;
+
 
 const StyledButton = styled.Button`
 `;

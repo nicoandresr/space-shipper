@@ -10,4 +10,4 @@ function setup() {
   );
 }
 
-export default setup; 
+export default setup;
