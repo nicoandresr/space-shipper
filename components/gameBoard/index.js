@@ -5,6 +5,7 @@ import Svg, { Circle } from 'react-native-svg';
 
 import { addSinglePoint } from '../score/actions';
 import Score from '../score';
+import SpaceShip from '../spaceShip'
 
 const GameBoard = () => {
   const dispatch = useDispatch()
@@ -27,7 +28,8 @@ const GameBoard = () => {
 
       <StyledText>Open up App.js to start working on your app!</StyledText>
 
-      <StyledButton title="Add point" onPress={pressHandler} />
+      <StyledButton title="Add point" onPress={pressHandler} />      
+      <SpaceShip/>
     </StyledView>
   )
 }
